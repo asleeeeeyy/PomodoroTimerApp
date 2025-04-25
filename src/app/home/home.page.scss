@@ -1,0 +1,146 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.clock-container {
+  width: 100%;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  
+  .current-time {
+    text-align: center;
+    
+    ion-label {
+      font-size: 1rem;
+      color: #666;
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    .time-display {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #333;
+    }
+  }
+}
+
+.timer-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  margin: 20px 0;
+  transition: all 0.5s ease;
+  
+  &.work {
+    background-color: rgba(66, 133, 244, 0.1);
+    box-shadow: 0 0 30px rgba(66, 133, 244, 0.2);
+    
+    .timer-display {
+      color: #4285F4;
+    }
+  }
+  
+  &.break {
+    background-color: rgba(52, 168, 83, 0.1);
+    box-shadow: 0 0 30px rgba(52, 168, 83, 0.2);
+    
+    .timer-display {
+      color: #34A853;
+    }
+  }
+  
+  .mode-indicator {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .timer-display {
+    font-size: 3.5rem;
+    font-weight: bold;
+    z-index: 2;
+  }
+  
+  .progress-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+    
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .progress-ring-circle {
+      fill: transparent;
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-dasharray: 283;
+      transition: stroke-dashoffset 0.5s;
+      
+      .work & {
+        stroke: #4285F4;
+      }
+      
+      .break & {
+        stroke: #34A853;
+      }
+    }
+  }
+}
+
+.controls {
+  width: 100%;
+  margin-top: 20px;
+  
+  ion-button {
+    margin-bottom: 10px;
+    height: 50px;
+    font-weight: 600;
+    --border-radius: 10px;
+    
+    &:first-child {
+      --background: #4285F4;
+      --background-activated: #3367d6;
+    }
+    
+    &:last-child {
+      --background: #EA4335;
+      --background-activated: #c5221f;
+    }
+  }
+}
+
+// Additional global styles
+ion-content {
+  --background: transparent;
+}
+
+ion-toolbar {
+  --background: #4285F4;
+  --color: white;
+}
+
+ion-title {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
