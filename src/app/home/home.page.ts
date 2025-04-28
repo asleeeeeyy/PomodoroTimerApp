@@ -10,29 +10,26 @@ import { Subscription } from 'rxjs';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule] // Add these imports
+  imports: [IonicModule, CommonModule, FormsModule]
 })
 export class HomePage implements OnInit, OnDestroy {
   currentTime: string = '';
   timeLeft: number = 0;
   isRunning: boolean = false;
   mode: string = 'work';
+  realTimeClock: string = '';
   
   private timeSubscription: Subscription = new Subscription();
   private runningSubscription: Subscription = new Subscription();
   private modeSubscription: Subscription = new Subscription();
-  private clockInterval: any;
+  private clockSubscription: Subscription = new Subscription();
   
   constructor(private timerService: TimerService) {}
   
   ngOnInit() {
-    this.updateCurrentTime();
-    this.clockInterval = setInterval(() => {
-      this.updateCurrentTime();
-    }, 1000);
-    
     this.timeSubscription = this.timerService.timeLeft.subscribe(time => {
       this.timeLeft = time;
+      this.currentTime = this.formatTime(time);
     });
     
     this.runningSubscription = this.timerService.isRunning.subscribe(running => {
@@ -42,21 +39,17 @@ export class HomePage implements OnInit, OnDestroy {
     this.modeSubscription = this.timerService.mode.subscribe(mode => {
       this.mode = mode;
     });
+    
+    this.clockSubscription = this.timerService.currentTime.subscribe(time => {
+      this.realTimeClock = this.formatRealTime(time);
+    });
   }
   
   ngOnDestroy() {
-    if (this.clockInterval) {
-      clearInterval(this.clockInterval);
-    }
-    
     this.timeSubscription.unsubscribe();
     this.runningSubscription.unsubscribe();
     this.modeSubscription.unsubscribe();
-  }
-  
-  updateCurrentTime() {
-    const now = new Date();
-    this.currentTime = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    this.clockSubscription.unsubscribe();
   }
   
   startPomodoro() {
@@ -73,8 +66,11 @@ export class HomePage implements OnInit, OnDestroy {
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   }
   
-  getProgressPercentage(): number {
-    const totalSeconds = this.mode === 'work' ? 25 * 60 : 5 * 60;
-    return (1 - this.timeLeft / totalSeconds) * 283;
+  formatRealTime(date: Date): string {
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
   }
+  getProgressPercentage(): number {
+  let total = this.mode === 'work' ? 25 * 60 : 5 * 60; 
+  return (this.timeLeft / total) * 283;
+}
 }

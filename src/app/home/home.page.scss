@@ -1,35 +1,95 @@
+ion-header {
+  width: 100% !important;
+}
+
+ion-toolbar {
+  --min-height: 56px !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+ion-title {
+  width: 100% !important;
+  text-align: center !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  font-size: 1.4rem !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+.clock-container {
+  .current-time {
+    ion-label {
+      font-size: 1.3rem !important;
+      font-weight: 700 !important;
+      color: #465987 !important;
+    }
+    
+    .time-display {
+      font-size: 1.8rem !important;
+      font-weight: 900 !important;
+    }
+  }
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #9face6 0%, #a3d8f4 40%, #f8bad5 100%) !important;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  padding: 20px;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  justify-content: center;
+  width: 100%;
+  max-width: 420px;
+  margin: auto;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0;
 }
 
 .clock-container {
   width: 100%;
-  padding: 15px;
-  border-radius: 15px;
-  background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  padding: 18px 0;
+  margin-bottom: 30px;
+  border-radius: 18px;
+  background: transparent !important; 
+  box-shadow: none !important; 
   
   .current-time {
     text-align: center;
-    
     ion-label {
-      font-size: 1rem;
-      color: #666;
+      font-size: 1.07rem;
+      color: #7a90c6;
       display: block;
-      margin-bottom: 5px;
+      letter-spacing: 1px;
+      margin-bottom: 7px;
+      opacity: 0.9;
     }
     
     .time-display {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #333;
+      font-size: 2.3rem;
+      font-weight: 900;
+      color: #465987;
+      background: transparent !important; 
+      border-radius: 0.7rem;
+      padding: 6px 22px;
+      display: inline-block;
+      box-shadow: none !important; 
+      letter-spacing: 2px;
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      margin-top: 4px;
+      transition: color 0.2s;
     }
   }
 }
@@ -40,107 +100,156 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 280px;
-  height: 280px;
+  width: 285px; height: 285px;
   border-radius: 50%;
-  margin: 20px 0;
-  transition: all 0.5s ease;
+  margin: 28px 0 32px 0;
+  background: linear-gradient(138deg, #ff9fb0 0%, #ff8da1 100%) !important;
+  box-shadow: 0 4px 36px 0 #8fa7f222, 0 0px 0px #fff;
+  transition: all 0.5s cubic-bezier(.68, -.55, .27, 1.55);
   
   &.work {
-    background-color: rgba(66, 133, 244, 0.1);
-    box-shadow: 0 0 30px rgba(66, 133, 244, 0.2);
-    
-    .timer-display {
-      color: #4285F4;
-    }
+    background: linear-gradient(138deg, #ff9fb0 0%, #ff8da1 100%) !important;
+    box-shadow: 0 5px 32px 0 #f794a466, 0 0 0 2px #e2eafc90;
+    .timer-display { color: #e35775; }
   }
   
   &.break {
-    background-color: rgba(52, 168, 83, 0.1);
-    box-shadow: 0 0 30px rgba(52, 168, 83, 0.2);
-    
-    .timer-display {
-      color: #34A853;
-    }
+    background: linear-gradient(141deg, #a8edea 0%, #fef6e4 100%);
+    box-shadow: 0 4px 33px 0 #99e2c252, 0 0 0 2px #fffee066;
+    .timer-display { color: #1eb477; }
   }
   
   .mode-indicator {
-    font-size: 1.2rem;
-    font-weight: 500;
-    margin-bottom: 10px;
-    color: #555;
+    font-size: 0.85rem !important; 
+    font-weight: 650;
+    margin-bottom: 8px !important; 
+    color: #6a7dae;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
+    opacity: 0.82;
+    background: #f2eafc54;
+    padding: 2px 10px;
+    border-radius: 0.5rem;
   }
   
   .timer-display {
-    font-size: 3.5rem;
-    font-weight: bold;
+    font-size: 3rem !important; 
+    font-weight: 900;
     z-index: 2;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 18px #f9a4bb33;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    padding: 0.25em;
+    transition: color 0.25s;
+    margin-bottom: 0;
+    line-height: 1 !important; 
   }
   
   .progress-ring {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     transform: rotate(-90deg);
+    z-index: 0;
+    pointer-events: none;
     
     svg {
       width: 100%;
       height: 100%;
+      display: block;
     }
     
     .progress-ring-circle {
-      fill: transparent;
-      stroke-width: 5;
+      fill: none;
+      stroke-width: 8;
       stroke-linecap: round;
       stroke-dasharray: 283;
-      transition: stroke-dashoffset 0.5s;
+      transition: stroke-dashoffset 0.6s cubic-bezier(.63,-0.04,.22,1.22),
+                  stroke 0.3s;
+      filter: drop-shadow(0 2px 8px #72c4f0a8);
       
-      .work & {
-        stroke: #4285F4;
-      }
+      .work & { stroke: #e35775; }
+      .break & { stroke: #1eb477; }
       
-      .break & {
-        stroke: #34A853;
-      }
+      stroke: #c5ccd6;
+      opacity: 0.96;
+      
+      filter: drop-shadow(0 0 10px #87f7e5d8);
     }
   }
 }
 
 .controls {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   
   ion-button {
-    margin-bottom: 10px;
-    height: 50px;
-    font-weight: 600;
-    --border-radius: 10px;
+    width: 80%;
+    min-width: 180px;
+    margin-bottom: 13px;
+    height: 52px;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.7px;
+    --border-radius: 12px;
+    --box-shadow: 0 3px 18px #4db9c880;
+    --background: linear-gradient(110deg, #ffb4c6 0%, #ffa571 80%);
+    --color: #fff;
+    text-shadow: 0 2px 8px #fbd70d2d;
+    transition: filter .16s cubic-bezier(.34,1.56,.64,1);
+    
+    &:hover, &:focus-visible {
+      filter: brightness(1.07) drop-shadow(0 0 18px #f3c4f6);
+    }
+    
+    &:active {
+      filter: brightness(0.93) drop-shadow(0 0 5px #e787aa);
+    }
     
     &:first-child {
-      --background: #4285F4;
-      --background-activated: #3367d6;
+      --background: linear-gradient(133deg, #74ebd5 0%, #acf3fa 100%);
+      --color: #176aa5;
+      border: 2.2px solid #e2eafc;
+      text-shadow: none;
+      box-shadow: 0 2px 10px #91e7f720;
     }
     
     &:last-child {
-      --background: #EA4335;
-      --background-activated: #c5221f;
+      --background: linear-gradient(133deg, #fd6a7e 60%, #fceecc 100%);
+      --color: #9d1f24;
+      border: 2.2px solid #fbe8ea;
+      box-shadow: 0 2px 10px #fdc6b239;
     }
   }
 }
 
-// Additional global styles
-ion-content {
-  --background: transparent;
-}
-
 ion-toolbar {
-  --background: #4285F4;
-  --color: white;
+  width: 100% !important;
+  padding: 0 !important;
+  --min-height: 56px !important;
 }
 
 ion-title {
-  font-weight: 700;
-  font-size: 1.3rem;
+  width: 100% !important;
+  text-align: center !important;
+  padding: 0 15px !important;
+  font-size: 1.3rem !important;
+}
+
+@media (max-width: 600px) {
+  .container {
+    min-height: 100dvh;
+    padding: 1.25rem 0.18rem 1.2rem 0.18rem;
+    border-radius: 0;
+  }
+  
+  .timer-container, .timer-container.work, .timer-container.break {
+    width: 280px;
+    height: 280px;
+    margin: 19px 0;
+    border-radius: 50%; 
+  }
 }

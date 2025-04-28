@@ -1,53 +1,146 @@
-/* Core CSS required for Ionic components to work properly */
-@import "~@ionic/angular/css/core.css";
+/* src/global.scss */
 
-/* Basic CSS for apps built with Ionic */
+/* Core and Ionic utilities */
+@import "~@ionic/angular/css/core.css";
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
-
-/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/display.css";
 @import "~@ionic/angular/css/padding.css";
 @import "~@ionic/angular/css/float-elements.css";
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-/* Custom global styles */
-* {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+/* Colors, tones, and variables for the app */
+:root {
+  --ion-font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  --ion-color-primary: #e35775;          
+  --ion-color-primary-rgb: 227,87,117;
+  --ion-color-primary-contrast: #fff;
+  --ion-color-primary-contrast-rgb: 255,255,255;
+  --ion-color-primary-shade: #be4563;
+  --ion-color-primary-tint: #eb7690;
+
+  --ion-color-secondary: #1eb477;        
+  --ion-color-secondary-rgb: 30,180,119;
+  --ion-color-secondary-contrast: #fff;
+  --ion-color-secondary-contrast-rgb: 255,255,255;
+  --ion-color-secondary-shade: #199a65;
+  --ion-color-secondary-tint: #40bf88;
+
+  --ion-color-tertiary: #74ebd5;        
+  --ion-color-tertiary-rgb: 116,235,213;
+
+  --ion-color-danger: #fd6a7e;           
+  --ion-color-danger-rgb: 253,106,126;
+  --ion-color-danger-contrast: #fff;
+  --ion-color-danger-contrast-rgb: 255,255,255;
+  --ion-color-danger-shade: #dd5a6e;
+  --ion-color-danger-tint: #fd8d98;
+
+  --ion-color-medium: #465987;
+  --ion-color-light: #fef6e4;
+  --ion-color-dark: #20263a;
 }
 
-:root {
-  --ion-color-primary: #4285F4;
-  --ion-color-primary-rgb: 66, 133, 244;
-  --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3a75d7;
-  --ion-color-primary-tint: #558df5;
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(120deg, #ade8f4 0%, #f3c4fb 100%);
+  opacity: 0.36;
+  filter: blur(10px) grayscale(0.14);
+}
 
-  --ion-color-secondary: #34A853;
-  --ion-color-secondary-rgb: 52, 168, 83;
-  --ion-color-secondary-contrast: #ffffff;
-  --ion-color-secondary-contrast-rgb: 255, 255, 255;
-  --ion-color-secondary-shade: #2e9449;
-  --ion-color-secondary-tint: #48b164;
+body,
+.ion-page,
+ion-content {
+  background: linear-gradient(120deg, #b7eaff 0%, #ffe7f0 50%, #e4ecfb 100%) !important;
+  min-height: 100vh;
+}
 
-  --ion-color-danger: #EA4335;
-  --ion-color-danger-rgb: 234, 67, 53;
-  --ion-color-danger-contrast: #ffffff;
-  --ion-color-danger-contrast-rgb: 255, 255, 255;
-  --ion-color-danger-shade: #ce3b2f;
-  --ion-color-danger-tint: #ec5649;
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #c1e7f5 0%, #ffd6e0 100%) !important;
+  font-family: var(--ion-font-family);
+  letter-spacing: 0.1px;
+  color: #28325a;
+}
+
+ion-app {
+  background: transparent !important;
+}
+
+/* AppBar and header */
+ion-toolbar {
+  --background: linear-gradient(90deg,#e5c3fc 0%, #a0eaf2 100%);
+  --color: #20263a !important;
+  box-shadow: 0 2px 14px #e0d3fa66, 0 0px 0px #fff;
+}
+
+ion-title {
+  font-family: var(--ion-font-family);
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #1e183a !important;
+  text-shadow: 0 1px 4px #e3eafc88;
+  font-size: 1.32rem;
+}
+
+ion-content {
+  --background: transparent !important;
+  background: transparent !important;
+}
+
+a {
+  color: #e35775;
+  text-decoration: none;
+  font-weight: 700;
+
+  &:hover, &:focus {
+    text-decoration: underline;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #f7c0e9;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .ion-page {
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: none;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 ion-button {
-  text-transform: none;
+  font-family: var(--ion-font-family);
   font-weight: 600;
-  letter-spacing: 0.5px;
+  border-radius: 12px !important;
+  letter-spacing: 0.7px;
+  text-transform: none;
+  outline: none;
+  box-shadow: 0 2px 8px #ffe6f1a0;
 }
+
+
+@media (max-width: 520px) {
+  ion-toolbar {
+    --background: linear-gradient(90deg,#e5c3fc 0%, #ffe0f0 100%);
+    font-size: 1.12rem;
+  }
+}
+
