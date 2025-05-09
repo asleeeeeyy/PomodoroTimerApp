@@ -1,22 +1,33 @@
 ion-header {
   width: 100% !important;
+  display: block !important;
 }
 
 ion-toolbar {
-  --min-height: 56px !important;
-  padding: 0 !important;
   width: 100% !important;
+  --min-height: 60px !important;
+  --background: linear-gradient(133deg, #fd6a7e 60%, #fceecc 100%) !important; 
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
 }
 
 ion-title {
   width: 100% !important;
   text-align: center !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  font-size: 1.4rem !important;
-  position: absolute !important;
-  left: 0 !important;
-  right: 0 !important;
+  padding: 16px 15px !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: #465987 !important; 
+  text-shadow: 0 1px 2px rgba(255,255,255,0.4) !important; 
+  height: auto !important;
+  min-height: 60px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  letter-spacing: 0.5px !important;
 }
 
 .clock-container {
@@ -38,7 +49,7 @@ ion-title {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; 
   min-height: 100vh;
   width: 100vw;
   background: linear-gradient(135deg, #9face6 0%, #a3d8f4 40%, #f8bad5 100%) !important;
@@ -48,10 +59,10 @@ ion-title {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; 
   width: 100%;
   max-width: 420px;
-  margin: auto;
+  margin: 0 auto; 
   background: transparent !important;
   box-shadow: none !important;
   border-radius: 0 !important;
@@ -210,8 +221,8 @@ ion-title {
     }
     
     &:first-child {
-      --background: linear-gradient(133deg, #74ebd5 0%, #acf3fa 100%);
-      --color: #176aa5;
+      --background: linear-gradient(133deg, #fd6a7e 60%, #fceecc 100%);
+      --color: #9d1f24;
       border: 2.2px solid #e2eafc;
       text-shadow: none;
       box-shadow: 0 2px 10px #91e7f720;
@@ -252,4 +263,390 @@ ion-title {
     margin: 19px 0;
     border-radius: 50%; 
   }
+}
+
+.notification-action {
+  width: 80%;
+  margin-bottom: 13px;
+  ion-button {
+    width: 100%;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    --background: linear-gradient(133deg, #fd6a7e 0%, #fceecc 100%);
+    --color: #9d1f24; 
+    border: 2px solid #fbd6d6;
+    border-radius: 12px;
+    box-shadow: 0 3px 14px rgba(253, 106, 126, 0.3);
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.4);
+    transition: filter 0.2s ease-in-out;
+    &:hover,
+    &:focus-visible {
+      filter: brightness(1.07) drop-shadow(0 0 18px #fdcad2);
+    }
+    &:active {
+      filter: brightness(0.95) drop-shadow(0 0 8px #f8a3b5);
+    }
+  }
+}
+
+.toast-message {
+  --background: linear-gradient(133deg, #fd6a7e 0%, #fceecc 100%);
+  --color: #465987; 
+  --border-radius: 14px;
+  --box-shadow: 0 3px 16px rgba(0, 0, 0, 0.2);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-align: center;
+  padding: 12px 20px;
+  font-size: 1rem;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.toast-message, 
+::ng-deep .toast-message {
+  text-align: center;
+  --background: linear-gradient(133deg, #fd6a7e 0%, #fceecc 100%);
+  --color: #465987;
+  --border-radius: 14px;
+  --box-shadow: 0 3px 16px rgba(0, 0, 0, 0.2);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+  --width: 80%;
+  --max-width: 320px;
+  --position: top; 
+  margin-top: 20px; 
+}
+
+::ng-deep .toast-message {
+  text-align: center;
+  --background: rgba(0, 0, 0, 0.7);
+  --color: white;
+  --border-radius: 8px;
+  --box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  --width: 80%;
+  --max-width: 300px;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 12px;
+}
+
+::ng-deep .alert-wrapper {
+  --background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  --max-width: 85%;
+  border-radius: 18px !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15) !important;
+  overflow: hidden !important;
+}
+
+::ng-deep .alert-head {
+  padding-top: 20px !important;
+  padding-bottom: 10px !important;
+  text-align: center !important;
+}
+
+::ng-deep .alert-title {
+  font-size: 1.4rem !important;
+  font-weight: 700 !important;
+  color: #465987 !important;
+  letter-spacing: 0.5px !important;
+}
+
+::ng-deep .alert-sub-title {
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+}
+
+::ng-deep .alert-message {
+  color: #6a7dae !important;
+  font-size: 1.1rem !important;
+  text-align: center !important;
+  padding: 10px 20px !important;
+}
+
+::ng-deep .alert-work-complete .alert-head {
+  background: linear-gradient(138deg, #ff9fb0 0%, #ff8da1 100%) !important;
+  padding: 15px !important;
+}
+
+::ng-deep .alert-work-complete .alert-title {
+  color: #9d1f24 !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4) !important;
+}
+
+::ng-deep .alert-break-complete .alert-head {
+  background: linear-gradient(141deg, #a8edea 0%, #fef6e4 100%) !important;
+  padding: 15px !important;
+}
+
+::ng-deep .alert-break-complete .alert-title {
+  color: #1eb477 !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4) !important;
+}
+
+::ng-deep .alert-button-group {
+  padding: 15px !important;
+  display: flex !important;
+  justify-content: center !important;
+  flex-direction: column !important; 
+  align-items: center !important; 
+}
+
+::ng-deep .alert-button {
+  border-radius: 12px !important;
+  width: 80% !important; 
+  max-width: 200px !important;
+  min-height: 45px !important;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 0.5px !important;
+  --background: linear-gradient(133deg, #fd6a7e 60%, #fceecc 100%) !important;
+  color: #9d1f24 !important;
+  margin: 5px auto !important; 
+  box-shadow: 0 3px 14px rgba(253, 106, 126, 0.3) !important;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.4) !important;
+  transition: filter 0.2s ease-in-out !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+::ng-deep .alert-work-complete .alert-button,
+::ng-deep .alert-break-complete .alert-button {
+  width: 80% !important;
+  max-width: 180px !important;
+  margin: 5px auto !important;
+  display: block !important;
+}
+
+::ng-deep .alert-timer-options .alert-button-group {
+  flex-direction: row !important; 
+  justify-content: space-around !important;
+}
+
+::ng-deep .alert-timer-options .alert-button.alert-button-confirm {
+  width: auto !important;
+  min-width: 120px !important;
+  margin: 0 5px !important;
+}
+.timer-container .controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.timer-container .controls ion-button {
+  width: 80%;
+  max-width: 200px;
+  margin: 5px auto;
+}
+
+::ng-deep .alert-radio-group {
+  max-height: 240px !important;
+  padding-bottom: 10px !important;
+}
+
+::ng-deep .alert-tappable.alert-radio {
+  height: auto !important;
+  contain: content !important;
+  min-height: 48px !important;
+}
+
+::ng-deep .alert-input-group {
+  padding: 10px 20px !important;
+}
+
+::ng-deep .alert-input-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+::ng-deep .alert-input {
+  margin: 5px 0 !important;
+  width: 80% !important;
+  max-width: 200px !important;
+  text-align: center !important;
+  --padding-start: 10px !important;
+  --padding-end: 10px !important;
+  border: 1px solid #e2eafc !important;
+  border-radius: 8px !important;
+}
+
+::ng-deep .alert-button:hover,
+::ng-deep .alert-button:focus-visible {
+  filter: brightness(1.07) drop-shadow(0 0 18px #fdcad2) !important;
+}
+
+::ng-deep .alert-button:active {
+  filter: brightness(0.95) drop-shadow(0 0 8px #f8a3b5) !important;
+}
+
+.controls ion-button[color="secondary"],
+ion-button.create-new-pomodoro {
+  --background: linear-gradient(133deg, #fd6a7e 60%, #fceecc 100%) !important;
+  --color: #9d1f24 !important;
+  border: 2.2px solid #fbe8ea !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 3px 14px rgba(253, 106, 126, 0.3) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.7px !important;
+  transition: filter 0.2s ease-in-out !important;
+}
+
+.controls ion-button[color="secondary"]:hover,
+.controls ion-button[color="secondary"]:focus-visible,
+ion-button.create-new-pomodoro:hover,
+ion-button.create-new-pomodoro:focus-visible {
+  filter: brightness(1.07) drop-shadow(0 0 18px #fdcad2) !important;
+}
+
+.controls ion-button[color="secondary"]:active,
+ion-button.create-new-pomodoro:active {
+  filter: brightness(0.95) drop-shadow(0 0 8px #f8a3b5) !important;
+}
+
+/* Session completion notifications styling */
+.session-notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  max-width: 350px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 18px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  overflow: hidden;
+  
+  .notification-header {
+    padding: 15px;
+    text-align: center;
+    
+    &.work-complete {
+      background: linear-gradient(138deg, #ff9fb0 0%, #ff8da1 100%);
+      
+      .notification-title {
+        color: #9d1f24;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
+      }
+    }
+    
+    &.break-complete {
+      background: linear-gradient(141deg, #a8edea 0%, #fef6e4 100%);
+      
+      .notification-title {
+        color: #1eb477;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
+      }
+    }
+    
+    .notification-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+  }
+  
+  .notification-content {
+    padding: 15px 20px;
+    text-align: center;
+    
+    .notification-message {
+      color: #6a7dae;
+      font-size: 1.1rem;
+      margin: 0 0 15px 0;
+    }
+  }
+  
+  .notification-actions {
+    display: flex;
+    justify-content: center;
+    padding: 0 15px 15px;
+    
+    ion-button {
+      min-width: 120px;
+      min-height: 45px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      --background: linear-gradient(133deg, #fd6a7e 60%, #fceecc 100%);
+      --color: #9d1f24;
+      border: 2px solid #fbd6d6;
+      border-radius: 12px;
+      box-shadow: 0 3px 14px rgba(253, 106, 126, 0.3);
+      text-shadow: 0 1px 3px rgba(255, 255, 255, 0.4);
+      transition: filter 0.2s ease-in-out;
+      
+      &:hover,
+      &:focus-visible {
+        filter: brightness(1.07) drop-shadow(0 0 18px #fdcad2);
+      }
+      
+      &:active {
+        filter: brightness(0.95) drop-shadow(0 0 8px #f8a3b5);
+      }
+    }
+  }
+}
+
+/* Animation for session notifications */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -60%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translate(-50%, -50%); }
+  to { opacity: 0; transform: translate(-50%, -60%); }
+}
+
+.session-notification.show {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.session-notification.hide {
+  animation: fadeOut 0.3s ease-in forwards;
+}
+
+.notification-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  
+  &.show {
+    opacity: 1;
+  }
+}
+
+.centered-alert {
+  --width: 80%;
+  --max-width: 400px;
+  --border-radius: 10px;
+  --text-align: center;
+}
+
+.centered-alert .alert-button-group {
+  justify-content: center;
+}
+
+.centered-alert .alert-button {
+  flex: 1;
+  text-align: center;
+}
+
+.centered-alert .alert-input-group {
+  padding: 0 16px;
 }

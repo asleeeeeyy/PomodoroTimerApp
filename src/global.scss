@@ -17,31 +17,26 @@
 /* Colors, tones, and variables for the app */
 :root {
   --ion-font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
   --ion-color-primary: #e35775;          
   --ion-color-primary-rgb: 227,87,117;
   --ion-color-primary-contrast: #fff;
   --ion-color-primary-contrast-rgb: 255,255,255;
   --ion-color-primary-shade: #be4563;
   --ion-color-primary-tint: #eb7690;
-
   --ion-color-secondary: #1eb477;        
   --ion-color-secondary-rgb: 30,180,119;
   --ion-color-secondary-contrast: #fff;
   --ion-color-secondary-contrast-rgb: 255,255,255;
   --ion-color-secondary-shade: #199a65;
   --ion-color-secondary-tint: #40bf88;
-
   --ion-color-tertiary: #74ebd5;        
   --ion-color-tertiary-rgb: 116,235,213;
-
   --ion-color-danger: #fd6a7e;           
   --ion-color-danger-rgb: 253,106,126;
   --ion-color-danger-contrast: #fff;
   --ion-color-danger-contrast-rgb: 255,255,255;
   --ion-color-danger-shade: #dd5a6e;
   --ion-color-danger-tint: #fd8d98;
-
   --ion-color-medium: #465987;
   --ion-color-light: #fef6e4;
   --ion-color-dark: #20263a;
@@ -77,6 +72,64 @@ ion-app {
 }
 
 /* AppBar and header */
+:root {
+  --ion-font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --ion-color-primary: #e35775;          
+  --ion-color-primary-rgb: 227,87,117;
+  --ion-color-primary-contrast: #fff;
+  --ion-color-primary-contrast-rgb: 255,255,255;
+  --ion-color-primary-shade: #be4563;
+  --ion-color-primary-tint: #eb7690;
+  --ion-color-secondary: #1eb477;        
+  --ion-color-secondary-rgb: 30,180,119;
+  --ion-color-secondary-contrast: #fff;
+  --ion-color-secondary-contrast-rgb: 255,255,255;
+  --ion-color-secondary-shade: #199a65;
+  --ion-color-secondary-tint: #40bf88;
+  --ion-color-tertiary: #74ebd5;        
+  --ion-color-tertiary-rgb: 116,235,213;
+  --ion-color-danger: #fd6a7e;           
+  --ion-color-danger-rgb: 253,106,126;
+  --ion-color-danger-contrast: #fff;
+  --ion-color-danger-contrast-rgb: 255,255,255;
+  --ion-color-danger-shade: #dd5a6e;
+  --ion-color-danger-tint: #fd8d98;
+  --ion-color-medium: #465987;
+  --ion-color-light: #fef6e4;
+  --ion-color-dark: #20263a;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(120deg, #ade8f4 0%, #f3c4fb 100%);
+  opacity: 0.36;
+  filter: blur(10px) grayscale(0.14);
+}
+
+body,
+.ion-page,
+ion-content {
+  background: linear-gradient(120deg, #b7eaff 0%, #ffe7f0 50%, #e4ecfb 100%) !important;
+  min-height: 100vh;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #c1e7f5 0%, #ffd6e0 100%) !important;
+  font-family: var(--ion-font-family);
+  letter-spacing: 0.1px;
+  color: #28325a;
+}
+
+ion-app {
+  background: transparent !important;
+}
+
+/* AppBar and header */
+/* AppBar and header */
 ion-toolbar {
   --background: linear-gradient(90deg,#e5c3fc 0%, #a0eaf2 100%);
   --color: #20263a !important;
@@ -101,7 +154,6 @@ a {
   color: #e35775;
   text-decoration: none;
   font-weight: 700;
-
   &:hover, &:focus {
     text-decoration: underline;
   }
@@ -110,10 +162,12 @@ a {
 ::-webkit-scrollbar {
   width: 7px;
 }
+
 ::-webkit-scrollbar-thumb {
   border-radius: 8px;
   background: #f7c0e9;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
@@ -136,7 +190,6 @@ ion-button {
   box-shadow: 0 2px 8px #ffe6f1a0;
 }
 
-
 @media (max-width: 520px) {
   ion-toolbar {
     --background: linear-gradient(90deg,#e5c3fc 0%, #ffe0f0 100%);
@@ -144,3 +197,98 @@ ion-button {
   }
 }
 
+// Add this to global.scss
+
+// Custom Toast Styling
+.custom-toast {
+  --background: linear-gradient(135deg, #e5c3fc 0%, #a0eaf2 100%);
+  --color: #20263a;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  font-family: var(--ion-font-family);
+  
+  .toast-header {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #1e183a;
+  }
+  
+  .toast-message {
+    font-size: 0.95rem;
+    color: #465987;
+  }
+  
+  .toast-button {
+    color: #e35775;
+    font-weight: 700;
+  }
+}
+
+// Custom Alert Styling
+.custom-alert {
+  --backdrop-opacity: 0.6;
+  
+  .alert-head {
+    background: linear-gradient(90deg, #e5c3fc 0%, #a0eaf2 100%);
+    color: #1e183a;
+    padding: 16px;
+    text-align: center;
+    border-bottom: 1px solid #e2eafc;
+    
+    .alert-title {
+      font-size: 1.2rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+  }
+  
+  .alert-radio-group {
+    padding: 8px 0;
+    
+    .alert-radio-label {
+      color: #465987;
+      font-size: 0.95rem;
+      padding: 13px 26px;
+      font-weight: 600;
+    }
+  }
+  
+  .alert-button-group {
+    padding: 8px;
+    
+    .alert-button {
+      color: #e35775;
+      font-weight: 700;
+    }
+    
+    .alert-cancel-button {
+      color: #465987;
+    }
+    
+    .alert-save-button {
+      background: linear-gradient(133deg, #74ebd5 0%, #acf3fa 100%);
+      color: #176aa5;
+      border-radius: 8px;
+      padding: 10px 16px;
+    }
+  }
+  
+  .alert-input-group {
+    padding: 10px 20px;
+    
+    .alert-input {
+      background: #f8f9fe;
+      border: 1px solid #e2eafc;
+      border-radius: 8px;
+      color: #465987;
+      font-size: 0.95rem;
+      padding: 10px 16px;
+      margin: 8px 0;
+      
+      &:focus {
+        border-color: #74ebd5;
+        box-shadow: 0 0 0 2px rgba(116, 235, 213, 0.2);
+      }
+    }
+  }
+}

@@ -1,8 +1,13 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>
+  <ion-toolbar color="primary" class="toolbar">
+    <ion-title class="title">
       Pomodoro Timer
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="selectPresetTimer()">
+        <ion-icon name="timer-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -14,14 +19,13 @@
         <div class="time-display">{{ realTimeClock }}</div>
       </div>
     </div>
-    
     <div class="timer-container" [ngClass]="mode">
       <div class="mode-indicator">
-        {{ mode === 'work' ? 'Work Session' : 'Break Time' }}
+        {{ mode === 'work' ? 'WORK SESSION' : 'BREAK TIME' }}
       </div>
       
       <div class="timer-display">
-        {{ formatTime(timeLeft) }}
+        {{ currentTime }}
       </div>
       
       <div class="progress-ring">
@@ -31,28 +35,49 @@
             cx="50" 
             cy="50" 
             r="45"
-            [style.stroke-dashoffset]="283 - getProgressPercentage()"
-          ></circle>
+            [style.stroke-dashoffset]="283 - getProgressPercentage()">
+          </circle>
         </svg>
       </div>
     </div>
-    
     <div class="controls">
-      <ion-button 
-        expand="block" 
-        [color]="isRunning ? 'medium' : 'primary'" 
-        (click)="startPomodoro()" 
-        [disabled]="isRunning">
-        Start Pomodoro
-      </ion-button>
+      <ng-container *ngIf="mode === 'work'">
+        <ion-button 
+          expand="block" 
+          [disabled]="isRunning"
+          (click)="startPomodoro()">
+          Start Pomodoro
+        </ion-button>
+        
+        <ion-button 
+          expand="block" 
+          [disabled]="!isRunning"
+          (click)="resetTimer()">
+          Reset
+        </ion-button>
+      </ng-container>
       
-      <ion-button 
-        expand="block" 
-        color="danger" 
-        (click)="resetTimer()" 
-        [disabled]="!isRunning">
-        Reset
-      </ion-button>
+      <ng-container *ngIf="mode === 'break'">
+        <ion-button 
+          expand="block" 
+          [disabled]="isRunning || breakTimerAutoStarted"
+          (click)="startPomodoro()">
+          Start Break Time
+        </ion-button>
+        
+        <ion-button 
+          expand="block" 
+          (click)="resetBreakTimer()">
+          Reset
+        </ion-button>
+        
+        <ion-button 
+          expand="block" 
+          color="secondary"
+          (click)="createNewPomodoro()">
+          Create New Pomodoro
+        </ion-button>
+      </ng-container>
     </div>
   </div>
 </ion-content>
